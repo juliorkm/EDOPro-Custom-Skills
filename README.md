@@ -34,7 +34,7 @@ You need to add this to the `"repos"` list to download card data and scripts.
 		}
 ```
 
-And these in 'urls' to download card images.
+And these to the `"urls"` list to download card images.
 ```json
 		{
 			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/{}.png",
