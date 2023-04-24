@@ -41,12 +41,20 @@ And these to the `"urls"` list to download card images.
 			"type": "pic"
 		},
 		{
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/{}.jpg",
+			"type": "pic"
+		},
+		{
 			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/field/{}.png",
 			"type": "field"
 		},
 		{
 			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/field/{}.jpg",
 			"type": "field"
+		},
+		{
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/cover/{}.jpg",
+			"type": "cover"
 		}
 ```
 
