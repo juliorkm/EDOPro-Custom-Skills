@@ -37,23 +37,23 @@ You need to add this to the `"repos"` list to download card data and scripts.
 And these to the `"urls"` list to download card images.
 ```json
 		{
-			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/{}.png",
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills-pics/main/{}.png",
 			"type": "pic"
 		},
 		{
-			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/{}.jpg",
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills-pics/main/{}.jpg",
 			"type": "pic"
 		},
 		{
-			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/field/{}.png",
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills-pics/main/field/{}.png",
 			"type": "field"
 		},
 		{
-			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/field/{}.jpg",
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills-pics/main/field/{}.jpg",
 			"type": "field"
 		},
 		{
-			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills/main/pics/cover/{}.jpg",
+			"url": "https://raw.githubusercontent.com/juliorkm/EDOPro-Custom-Skills-pics/main/cover/{}.jpg",
 			"type": "cover"
 		}
 ```
