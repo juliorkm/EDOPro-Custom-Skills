@@ -38,12 +38,11 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--opd register
 	Duel.RegisterFlagEffect(ep,id,0,0,0)
-	--return card to bottom
-	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TODECK)
 	--reveal card(s)
 	local g=Duel.GetMatchingGroup(s.filter,tp,LOCATION_HAND,0,nil)
 	local sg=aux.SelectUnselectGroup(g,e,tp,1,2,s.rescon,1,tp,HINTMSG_CONFIRM,s.rescon,nil,true)
 	Duel.ConfirmCards(1-tp,sg)
+	Duel.ShuffleHand(tp)
 	--summon tokens
 	local t1=Duel.CreateToken(tp,69811711)
 	local t2=Duel.CreateToken(tp,69811711)
