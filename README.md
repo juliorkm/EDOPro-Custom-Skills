@@ -7,7 +7,7 @@ A banlist was made to create a format that brings a balanced casual experience. 
 ## Autosync with Github
 
 EDOPro has a feature to sync cards with Github, so you can be always up to date with new card releases and updates.<br>
-To add Autosync of this repository to your EDOPro, you have to edit your `cong/configs.json` file in EDOPro.<br>
+To add Autosync of this repository to your EDOPro, you have to edit your `config/configs.json` file in EDOPro.<br>
 The config.json is structured like this
 ```
 {
