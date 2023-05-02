@@ -3,6 +3,7 @@ Official repository for XenorrK's custom skill cards for EDOPro.
 
 ## Custom banlist
 A banlist was made to create a format that brings a balanced casual experience. The banlist and the Skill Cards were designed to be played together.
+The current banlist is based on the February 2023 TCG banlist, but with custom changes. You can find it [here](https://github.com/juliorkm/EDOPro-Custom-Skills/blob/main/lflists/XenoSamkSkills2023.04.lflist.conf).
 
 ## Autosync with Github
 
@@ -28,6 +29,7 @@ You need to add this to the `"repos"` list to download card data and scripts.
 			"repo_name": "XenorrK Custom Skills",
 			"repo_path": "./repositories/xenorrk-custom-skills",
 			"data_path": "expansions",
+			"lflist_path": "lflists",
 			"script_path": "script",
 			"should_update": true,
 			"should_read": true
