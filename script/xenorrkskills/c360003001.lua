@@ -19,7 +19,7 @@ function s.filter(c,e,tp)
 		and Duel.GetLocationCountFromEx(tp,tp,e:GetHandler(),c,0x60)>0
 end
 function s.filter2(c,rc)
-	return c:IsRace(rc)
+	return c:IsRace(rc) and c:IsFaceUp()
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(1<<32))
