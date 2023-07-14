@@ -6,10 +6,7 @@ end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	return aux.CanActivateSkill(tp)
-		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_MZONE,0,1,nil)
-end
-function s.filter(c)
-	return c:IsFaceup() and c:IsType(TYPE_EFFECT) and c:IsAttribute(ATTRIBUTE_EARTH)
+		and Duel.IsExistingMatchingCard(aux.FaceupFilter(Card.IsAttribute,ATTRIBUTE_EARTH),tp,LOCATION_MZONE,0,1,nil)
 end
 function s.atkval(e,c)
 	return Duel.GetMatchingGroupCount(aux.FaceupFilter(Card.IsAttribute,ATTRIBUTE_EARTH),c:GetControler(),LOCATION_MZONE,0,nil)*300
@@ -27,7 +24,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	--choose earth monster
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_FACEUP)
-	local tc=Duel.SelectMatchingCard(tp,s.filter,tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
+	local tc=Duel.SelectMatchingCard(tp,aux.FaceupFilter(Card.IsAttribute,ATTRIBUTE_EARTH),tp,LOCATION_MZONE,0,1,1,nil):GetFirst()
 	--count number of earths
 	local count=Duel.GetMatchingGroupCount(aux.FaceupFilter(Card.IsAttribute,ATTRIBUTE_EARTH),tp,LOCATION_MZONE,0,nil)
 	--piercing battle damage
@@ -35,14 +32,15 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		local e1=Effect.CreateEffect(tc)
 		e1:SetType(EFFECT_TYPE_SINGLE)
 		e1:SetCode(EFFECT_PIERCE)
+		e1:SetRange(LOCATION_MZONE)
 		e1:SetDescription(aux.Stringid(id,0))
+		e1:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 		tc:RegisterEffect(e1)
 	end
 	--gain ATK/DEF
 	if count>=3 then
 		local e2=Effect.CreateEffect(tc)
 		e2:SetType(EFFECT_TYPE_SINGLE)
-		e2:SetProperty(EFFECT_FLAG_SINGLE_RANGE)
 		e2:SetCode(EFFECT_UPDATE_ATTACK)
 		e2:SetRange(LOCATION_MZONE)
 		e2:SetValue(s.atkval)
@@ -59,7 +57,9 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 		e4:SetType(EFFECT_TYPE_SINGLE)
 		e4:SetCode(EFFECT_EXTRA_ATTACK_MONSTER)
 		e4:SetValue(1)
+		e4:SetRange(LOCATION_MZONE)
 		e4:SetDescription(aux.Stringid(id,2))
+		e4:SetProperty(EFFECT_FLAG_SINGLE_RANGE+EFFECT_FLAG_CLIENT_HINT)
 		tc:RegisterEffect(e4)
 	end
 	--destroy during next end
