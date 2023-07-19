@@ -42,7 +42,8 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--choose monsters in gy or banish
 	local g3=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_GRAVE+LOCATION_REMOVED,0,2,2,nil,rc)
 	if #g3>0 then
-		local ct=Duel.SendtoDeck(g3,nil,SEQ_DECKBOTTOM,REASON_RULE)
+		Duel.SendtoDeck(g3,nil,SEQ_DECKBOTTOM,REASON_RULE)
+		local ct=Duel.GetOperatedGroup():FilterCount(Card.IsLocation,nil,LOCATION_DECK)
 		Duel.SortDeckbottom(tp,tp,ct)
 	end
 	--summon
