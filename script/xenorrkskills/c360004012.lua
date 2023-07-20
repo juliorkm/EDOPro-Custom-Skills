@@ -57,6 +57,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e2:SetCountLimit(1)
 	e2:SetCondition(s.poscon)
 	e2:SetOperation(s.posop)
+	e2:SetReset(RESET_PHASE+PHASE_END,2)
 	Duel.RegisterEffect(e2,tp)
 	--flip during End phase
 	local e3=Effect.CreateEffect(e:GetHandler())
