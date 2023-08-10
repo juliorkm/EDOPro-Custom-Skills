@@ -20,14 +20,22 @@ function s.healop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Recover(tp,s[tp]/4,REASON_RULE)
 end
 function s.checkop(e,tp,eg,ep,ev,re,r,rp)
-	s[ep]=s[ep]+ev
+	local p=e:GetHandler():GetControler()
+	s[p]=s[p]+ev
 	--update player hint for amount paid
-    local ce=Duel.IsPlayerAffectedByEffect(tp,id)
+    local ce=Duel.IsPlayerAffectedByEffect(p,id)
     if ce then
         local nce=ce:Clone()
         ce:Reset()
-        nce:SetDescription(s.lpstr(s[ep]))
-        Duel.RegisterEffect(nce,tp)
+        nce:SetDescription(s.lpstr(s[p]))
+        Duel.RegisterEffect(nce,p)
+    end
+    local ce=Duel.IsPlayerAffectedByEffect(p,id)
+    if ce then
+        local nce=ce:Clone()
+        ce:Reset()
+        nce:SetDescription(s.lpstr(s[p]))
+        Duel.RegisterEffect(nce,p)
     end
 end
 function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
