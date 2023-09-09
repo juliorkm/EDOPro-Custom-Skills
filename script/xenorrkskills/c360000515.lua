@@ -52,7 +52,7 @@ function s.filter1(c,e,tp)
 end
 function s.filter2(c,e,tp,mc,rk,rc,pg)
 	if c.rum_limit and not c.rum_limit(mc,e) then return false end
-	return mc:IsType(TYPE_XYZ,c,SUMMON_TYPE_XYZ,tp) and c:IsRank(rk) and c:IsRace(rc) and (c:IsSetCard(0x1048) or c:IsSetCard(0x1073))
+	return mc:IsType(TYPE_XYZ,c,SUMMON_TYPE_XYZ,tp) and c:IsRank(rk) and c:IsRace(rc)
 		and Duel.GetLocationCountFromEx(tp,tp,mc,c)>0 and mc:IsCanBeXyzMaterial(c,tp) and c:IsCanBeSpecialSummoned(e,SUMMON_TYPE_XYZ,tp,false,false)
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
@@ -68,7 +68,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	--attach
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local tc2=Duel.SelectMatchingCard(tp,s.attfilter,tp,LOCATION_GRAVE,0,1,1,nil,e):GetFirst()
+	local tc2=Duel.SelectMatchingCard(tp,Card.IsMonster,tp,LOCATION_GRAVE,0,1,1,nil):GetFirst()
 	if tc then
 		Duel.Overlay(tc,tc2,true)
 	end
