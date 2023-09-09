@@ -85,6 +85,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 				Duel.Overlay(sc,tc)
 				Duel.SpecialSummon(sc,SUMMON_TYPE_XYZ,tp,tp,false,false,POS_FACEUP)
 				sc:CompleteProcedure()
+			end
 		end
 	end
 	Duel.Hint(HINT_SKILL_FLIP,tp,id|(2<<32))
