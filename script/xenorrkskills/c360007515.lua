@@ -68,14 +68,14 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.SpecialSummon(tc,0,tp,tp,false,false,POS_FACEUP)
 	--attach
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_XMATERIAL)
-	local tc2=Duel.SelectMatchingCard(tp,s.attfilter,tp,LOCATION_HAND+LOCATION_DECK+LOCATION_EXTRA,0,1,1,nil,e):GetFirst()
+	local tc2=Duel.SelectMatchingCard(tp,s.attfilter,tp,LOCATION_GRAVE,0,1,1,nil,e):GetFirst()
 	if tc then
 		Duel.Overlay(tc,tc2,true)
 	end
 	--rank-up
 	local rk=tc:GetRank()
 	local pg=aux.GetMustBeMaterialGroup(tp,Group.FromCards(tc),tp,nil,nil,REASON_XYZ)
-	if (#pg<=0 or (#pg==1 and pg:IsContains(tc))) and c:IsFaceup() and (rk>0 or tc:IsStatus(STATUS_NO_LEVEL)) and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc,rk+1,tc:GetRace(),pg) then
+	if (#pg<=0 or (#pg==1 and pg:IsContains(tc))) and tc:IsFaceup() and (rk>0 or tc:IsStatus(STATUS_NO_LEVEL)) and Duel.IsExistingMatchingCard(s.filter2,tp,LOCATION_EXTRA,0,1,nil,e,tp,tc,rk+1,tc:GetRace(),pg) then
 		if Duel.SelectYesNo(tp,aux.Stringid(id,0)) then
 			Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_SPSUMMON)
 			local g=Duel.SelectMatchingCard(tp,s.filter2,tp,LOCATION_EXTRA,0,1,1,nil,e,tp,tc,tc:GetRank()+1,tc:GetRace(),pg)
