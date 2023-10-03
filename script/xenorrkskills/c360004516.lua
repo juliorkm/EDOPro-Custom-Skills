@@ -26,6 +26,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 		and Duel.GetDrawCount(tp)>0
 		and Duel.IsExistingMatchingCard(s.mfilter,tp,LOCATION_DECK,0,1,e:GetHandler(),tp)
 		and Duel.GetTurnCount()>=3
+		and Duel.GetFieldGroupCount(tp,0,LOCATION_ONFIELD)>Duel.GetFieldGroupCount(tp,LOCATION_ONFIELD,0)
 end
 function s.mfilter(c,tp)
 	local g=Duel.GetMatchingGroup(s.thfilter,tp,LOCATION_DECK,0,nil,c)
