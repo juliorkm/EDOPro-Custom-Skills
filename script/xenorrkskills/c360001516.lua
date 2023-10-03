@@ -1,7 +1,7 @@
 --The Hero's Journey
 local s,id=GetID()
 function s.initial_effect(c)
-	aux.AddSkillProcedure(c,1,false,aux.FALSE,nil, 1)
+	aux.AddPreDrawSkillProcedure(c,1,false,s.flipcon,s.flipop)
 		local e1=Effect.CreateEffect(c)
 		e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 		e1:SetCode(EVENT_STARTUP)
@@ -61,7 +61,7 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--send monster
 	Duel.SetOperationInfo(0,CATEGORY_TOGRAVE,nil,1,tp,LOCATION_DECK)
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_TOGRAVE)
-	local g=Duel.SelectMatchingCard(tp,s.tgfilter,tp,LOCATION_DECK,0,1,1,nil)
+	local g=Duel.SelectMatchingCard(tp,s.mfilter,tp,LOCATION_DECK,0,1,1,nil,tp)
 	if #g>0 then
 		Duel.SendtoGrave(g,REASON_RULE)
 	end
@@ -70,17 +70,16 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	local thg=aux.SelectUnselectGroup(rvg,e,tp,3,3,aux.dncheck,1,tp,HINTMSG_CONFIRM)
 	if #thg==3 then
 		Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_ATOHAND)
-		local sg=thg:Select(tp,3,3,nil)
-		Duel.ConfirmCards(1-tp,sg)
-		local p
+		Duel.ConfirmCards(1-tp,thg)
 		--check if control
+		local p
 		if Duel.IsExistingMatchingCard(s.confilter,tp,LOCATION_ONFIELD,0,1,nil,g:GetFirst()) then
 			p=tp
-		else e:GetLabel()==1 then
+		else
 			p=1-tp
 		end
 		Duel.Hint(HINT_SELECTMSG,p,HINTMSG_ATOHAND)
-		local tg=sg:Select(p,1,1,nil)
+		local tg=thg:Select(p,1,1,nil)
 		Duel.SendtoHand(tg,nil,REASON_RULE)
 		Duel.ConfirmCards(1-tp,tg)
 	end
