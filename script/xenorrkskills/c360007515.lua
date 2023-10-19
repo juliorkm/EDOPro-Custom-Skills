@@ -15,7 +15,7 @@ function s.initial_effect(c)
 end
 function s.condition(e,tp,eg,ep,ev,re,r,rp)
 	--condition
-	return not Duel.IsExistingMatchingCard(aux.NOT(Card.IsType),tp,LOCATION_EXTRA,0,1,nil,TYPE_XYZ)
+	return Duel.IsExistingMatchingCard(Card.IsType,tp,LOCATION_EXTRA,0,12,nil,TYPE_XYZ)
 end
 function s.activate(e,tp,eg,ep,ev,re,r,rp)
 	local c=e:GetHandler()
@@ -36,7 +36,8 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	--condition
 	local tid=Duel.GetTurnCount()
 	return aux.CanActivateSkill(tp)
-		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0)<=0
+		and Duel.GetLocationCount(tp,LOCATION_MZONE)>0
+		and Duel.GetFieldGroupCount(tp,LOCATION_MZONE,0,nil)<Duel.GetFieldGroupCount(tp,0,LOCATION_MZONE,nil)
 		and Duel.IsExistingMatchingCard(s.filter,tp,LOCATION_GRAVE,0,1,nil,e,tp,tid)
 		and Duel.GetCustomActivityCount(id,tp,ACTIVITY_SPSUMMON)==0
 end
