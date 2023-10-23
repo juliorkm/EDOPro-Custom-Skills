@@ -1,4 +1,4 @@
---Destiny Draw
+--Chosen Future
 local s,id=GetID()
 function s.initial_effect(c)
 	--skill
@@ -48,7 +48,7 @@ function s.flipcon(e,tp,eg,ep,ev,re,r,rp)
 	and Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>0
 	and Duel.GetDrawCount(tp)>0
 	and Duel.IsExistingMatchingCard(Card.IsCode,tp,LOCATION_DECK,0,1,nil,s[tp])
-	and s[2+tp]>=4000
+	and s[2+tp]>=2000
 end
 function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	--ask if you want to activate the skill or not
