@@ -12,9 +12,6 @@ function s.initial_effect(c)
 		Duel.RegisterEffect(ge1,0)
 	end)
 end
-function s.healcon(e,tp,eg,ep,ev,re,r,rp)
-	return tp==Duel.GetTurnPlayer()
-end
 function s.healop(e,tp,eg,ep,ev,re,r,rp)
 	Duel.Hint(HINT_CARD,tp,id)
 	Duel.Recover(tp,s[tp]/4,REASON_RULE)
@@ -53,7 +50,6 @@ function s.flipop(e,tp,eg,ep,ev,re,r,rp)
 	e1:SetType(EFFECT_TYPE_FIELD+EFFECT_TYPE_CONTINUOUS)
 	e1:SetCode(EVENT_PHASE+PHASE_END)
 	e1:SetCountLimit(1)
-	e1:SetCondition(s.healcon)
 	e1:SetOperation(s.healop)
 	Duel.RegisterEffect(e1,tp)
     --player hint for amount paid
